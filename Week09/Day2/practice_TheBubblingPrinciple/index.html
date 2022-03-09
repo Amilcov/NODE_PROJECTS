@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      window.addEventListener("DOMContentLoaded", event => {
+        // Now listen for a click on the body
+        document.body.addEventListener("click", event => {
+          console.log("The body click event!");
+          console.log(event.target.id);
+        });
+
+        const divParent = document.getElementById('divIdParent');
+        divParent.addEventListener('click', (event) => {
+                console.log('A click trigger from  div Parent');
+                console.log(event.target.id);
+                console.log('Event currentTarget:', event.currentTarget);
+        })
+      });
+
+    </script>
+  </head>
+  <body>
+    <div>
+      <div id="divIdParent" style="border: 1px solid red; margin: 5px">
+        <p id="paragraph">
+          If you click on this paragraph, then the function listening on the body 
+          will be called.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
