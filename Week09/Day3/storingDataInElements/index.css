@@ -1,0 +1,28 @@
+li[data-type='drinks'] {
+    color: blue;
+} 
+li[data-type='bakery'] {
+    color: yellow;
+} 
+li[data-type='canned'] {
+    color: rgb(22, 83, 10);
+} 
+li[data-type='dairy'] {
+    color: rgb(250, 237, 237);
+} 
+li[data-type='frozen'] {
+    color: rgb(191, 212, 221);
+} 
+li[data-type='meats'] {
+    color: red;
+} 
+li[data-type='produce'] {
+    color: green;
+} 
+li[data-type='toiletries'] {
+    color: orange;
+} 
+li[data-type='other'] {
+    color: ;
+} 
+
