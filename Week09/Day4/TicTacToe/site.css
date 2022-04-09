@@ -1,0 +1,52 @@
+
+#board {
+   background-color: black;
+   column-gap: 5px;
+   display: grid;   
+   grid-template-columns: 100px 100px 100px;
+   grid-template-rows: 100px 100px 100px; 
+   justify-content: center; 
+   row-gap: 5px;
+}
+
+
+#btnNew {
+    justify-content: left;
+}
+
+#btnCancel {
+    float: right;
+}
+
+.controlBtn {
+    margin-top: 25px;
+}
+
+.cell {
+   background-color: white;
+   border: 0px;
+} 
+.content {
+   justify-content: center;
+   margin-left: auto;
+   margin-right: auto;
+   width: 310px;
+}
+
+.winner {
+   font-size: 28px;
+   font-weight: bold;
+   margin-bottom: 25px;
+   text-align: center;
+}
+
+.cell, img {
+   border: 0px solid red;
+   margin: 0px;
+   padding: 0px;
+}
+
+img {
+    border: 2px solid green;
+   margin: 0px;
+}
