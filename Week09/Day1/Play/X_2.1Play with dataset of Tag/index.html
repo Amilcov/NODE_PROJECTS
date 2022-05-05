@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser</title>
+</head>
+
+<body>
+    <div id="wrapper" data-index="1" data-cine="adriana" data-ce="happy">
+        <div class="container">
+            <button id="hello">Say Hello</button>
+            <button id="bye">Say Bye</button>
+            <button id="swap">Swap Places</button>
+        </div>
+    </div>
+  
+    <script>
+        const elem = document.getElementById("wrapper");
+        const data = elem.dataset.index + " " + elem.dataset.cine + " " + elem.dataset.ce;
+        console.log('Datele stocate la nivel de element: ', data);
+     </script>
+     <script src="./script.js"></script>
+</body>
+
+</html>
