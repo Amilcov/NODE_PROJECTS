@@ -20,21 +20,19 @@ window.onload = () => {
         if (today.getMonth() === 9 && today.getDate === 2) {
             daysBetween =  'Happy Birth Day!!'
         } else {
-               if (today.getMonth() >= 10 || (today.getMonth() === 9 &&  today.getDay() === 1) ){
+                if (today.getMonth() >= 10 || (today.getMonth() === 9 &&  today.getDay() === 1) ){
                   let myNextBDay = new Date(today.getFullYear + 1, 09, 02);
                 }
            daysBetween = parseInt((myNextBDay.getTime()-today.getTime())/ (24* 3600 * 1000));
         }     
 
-      
 
         return daysBetween;
     }
     const countDown = document.createElement('div');
     countDown.setAttribute("id", "birthDays");
-    //countDown.innerHTML = '<p id ="birthDays"> &#127881 &#127873 &#129346 &#127874 '+ daysUntilMyBDay().toString() + '</p>';   
-     countDown.innerHTML = '<p> &#127881 &#127873 &#129346 &#127874 : '+ daysUntilMyBDay().toString() + ' days </p>'
-   document.body.appendChild(countDown);
+    countDown.innerHTML = '<p> &#127881 &#127873 &#129346 &#127874 : '+ daysUntilMyBDay().toString() + ' days </p>'
+    document.body.appendChild(countDown);
 
     const pHobbies = document.createElement('p');
     pHobbies.setAttribute("class", "category");
@@ -117,7 +115,7 @@ btn.addEventListener("click", more);
 
 function more() {
     let elem = document.getElementById("idOther");
-    elem.outerHTML = '<p>Love to create web application that most higher necessities of people</p>';
+    elem.outerHTML = '<p>Love to create web applications that meet the necessities of people</p>';
 }
 divOther.appendChild(btn);
 }
