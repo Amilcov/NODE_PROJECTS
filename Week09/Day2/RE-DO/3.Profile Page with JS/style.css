@@ -1,0 +1,42 @@
+h1 {
+    color: rgb(43, 47, 235);
+    text-align: center;
+}
+
+li {
+    padding: 10px;
+    list-style-type: square;
+}
+
+ul {
+    border: 2px solid rgb(21, 135, 148);
+}
+
+.category {
+    color:rgb(21, 135, 148);
+    padding-top: 20px;
+}
+
+.restaurants li{
+    list-style-type: circle;
+}
+
+#birthDays {
+    text-align: center;
+    margin-top: 0;
+}
+
+#idOther > h3 {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+#pictureId {
+    background-image: url("./profilePic.png");
+    background-size: cover;
+    border: 2px solid red;
+    height: 120px;
+    margin: 0 auto; 
+    width: 150px;         
+   }
