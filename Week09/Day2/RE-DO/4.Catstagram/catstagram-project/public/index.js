@@ -72,7 +72,6 @@ window.onload = () => {
 
     const divUserVote = document.createElement('div');
     divUserVote.setAttribute("class", "center");
-    // divUser.classList.add('top');
     divUser.appendChild(divUserVote);
 
     const btnUpVote = document.createElement('button');
@@ -89,7 +88,7 @@ window.onload = () => {
                  <form id="commentForm" class="top">
                     <label for="commentId">Comment</label>
                     <input type ="text" id="commentId"/>
-                    <button id ="submit" onsubmit="()={return false}">Submit</button>
+                    <button id ="submit">Submit</button>
                  </form>    
                 `
 document.body.insertAdjacentHTML('beforeend', addForm);
@@ -116,7 +115,7 @@ btnDownVote.addEventListener('click', () => {
 
 btnSubmit = document.querySelector('#submit');
 btnSubmit.addEventListener('click',(event) => {
-  // event.preventDefault();
+   event.preventDefault();
    comments.value +=  document.querySelector('#commentId').value  + '\n'; 
 })
 
