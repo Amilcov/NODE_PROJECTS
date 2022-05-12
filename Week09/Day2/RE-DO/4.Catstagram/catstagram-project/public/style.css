@@ -1,0 +1,35 @@
+
+div, h3, #commentForm {
+    text-align: center;
+}
+
+img {
+    width: 30%; 
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.spaceH {
+   margin-right: 10px;
+}
+
+.top {
+    margin-top: 20px;
+}
+
+#comments {
+    width: 70%;
+    height: 40%;
+}
+ 
+@media only screen and (min-width: 768px) {
+    #comments {
+        height: 300px;
+    }
+   
+}
