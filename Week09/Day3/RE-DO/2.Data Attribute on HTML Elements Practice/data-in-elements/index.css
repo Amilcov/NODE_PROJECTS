@@ -1,0 +1,33 @@
+li[data-type="drinks"] {
+    background-color: rgb(12, 231, 223);
+}
+
+li[data-type="bakery"] {
+    background-color: rgb(233, 233, 154);
+}
+
+li[data-type="canned"] {
+    background-color: rgb(18, 79, 3);
+}
+
+li[data-type="dairy"] {
+    background-color: rgb(242, 249, 112);
+}
+
+li[data-type="frozen"] {
+    background-color: rgb(242, 242, 232);
+}
+li[data-type="meats"] {
+    background-color: rgb(236, 17, 72);
+}
+li[data-type="produce"] {
+    background-color: rgb(41, 19, 241);
+}
+li[data-type="toiletries"] {
+    background-color: rgb(162, 10, 109);
+}
+li[data-type="other"] {
+    background-color: rgb(47, 207, 7);
+}
+
+
