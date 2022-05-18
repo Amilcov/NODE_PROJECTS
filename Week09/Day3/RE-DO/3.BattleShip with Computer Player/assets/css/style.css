@@ -1,0 +1,123 @@
+body {
+    background-color: rgb(238, 238, 78);
+}
+
+footer {
+    font-size: 6px;
+    color:hsl(101, 84%, 52%);
+    position: absolute; bottom: 0; right: 0; width: 100px; text-align:right;
+}
+
+h2 {
+    font-family: Chakra Petch;
+    margin-top: 40px;
+}
+
+.center {
+    text-align: center;
+}
+
+.dimension {
+    width: 25px;
+}
+
+.field {
+    border-radius: 0;
+    box-sizing : border-box;
+    font-size: 18px;
+    height: 35px;
+    margin: 0;
+    width: 35px;
+}
+
+.fieldActive {
+    border: 1px solid black;
+    color:transparent;
+}
+
+.fieldInactive  {
+    background-color: transparent;
+    border: none;
+}
+
+.hit {
+   background-color: green;
+}
+.miss {
+   background-color: red;;  
+}
+
+#board {
+    font-size: 0;
+    margin-top: 30px;
+}
+
+#btnGenerate {
+    display: block;
+    font-size: 15px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+#computerArea {
+    transform: scale(0.5);
+}
+
+
+#endGame {
+    background: -webkit-linear-gradient(rgb(43, 235, 69), rgb(255, 255, 0));
+    border: 2px solid red;
+    background-color: yellow;
+    height: 10%;
+    margin-left: 30%;
+    margin-top: 10%;
+    opacity: 80%;
+    padding-bottom: 20px;
+    position: absolute;
+    visibility: hidden;
+    width: 30%;
+}
+
+
+#info {
+    padding-left: 30px;
+}
+
+#score {
+    margin-top: -12px;
+}
+
+#winner {
+    color: blue;
+    font-weight: bold;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input.dimension::-webkit-outer-spin-button,
+input.dimension::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input.dimension[type=number] {
+    -moz-appearance: textfield;
+}
+
+@media only screen and (min-width: 700px) {
+  
+
+    #computerArea {
+       margin-top: 130px;
+    }
+
+    #drawArea {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        margin-left: 60px;
+    }
+
+
+
+}

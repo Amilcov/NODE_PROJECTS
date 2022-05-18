@@ -1,0 +1,75 @@
+body {
+    background-color: rgb(238, 238, 78);
+}
+
+h2 {
+    font-family: Chakra Petch;
+    margin-top: 40px;
+}
+
+.center {
+    text-align: center;
+}
+
+.dimension {
+    width: 25px;
+}
+
+.field {
+    border-radius: 0;
+    box-sizing : border-box;
+    font-size: 18px;
+    height: 35px;
+    margin: 0;
+    width: 35px;
+}
+
+.fieldActive {
+    border: 1px solid black;
+    color:transparent;
+}
+
+.fieldInactive  {
+    background-color: transparent;
+    border: none;
+}
+
+.hit {
+   background-color: green;
+}
+.miss {
+   background-color: red;;  
+}
+
+#board {
+    font-size: 0;
+    margin-top: 30px;
+}
+
+#btnGenerate {
+    display: block;
+    font-size: 15px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+#info {
+  padding-left: 30px;
+}
+
+#score {
+  margin-top: -12px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input.dimension::-webkit-outer-spin-button,
+input.dimension::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input.dimension[type=number] {
+    -moz-appearance: textfield;
+}
