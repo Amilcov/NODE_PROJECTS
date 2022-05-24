@@ -25,7 +25,8 @@ function playGame() {
     let game = new Game();
     addClickEventToBoard(game);
     addClickEventToCancelBtn(game);
-    newBtnEnabled(false);    
+    newBtnEnabled(false);  
+    cancelBtnEnabled(true);  
 }
 
 function addClickEventToBoard(game) {
@@ -42,7 +43,9 @@ function newBtnEnabled(value) {
     document.getElementById("newBtn").setAttribute('disabled', !value);
 }
 
-
+function cancelBtnEnabled(value) {
+    document.getElementById("cancelBtn").disabled = !value;
+}
     
 
 
