@@ -1,0 +1,75 @@
+#board {
+    background-color: black;
+    border-color: white;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+#board button {
+    background-color: white;
+    border: 3px solid white;
+    color: white;
+}
+
+#cancelBtn {
+    margin-left: auto;
+} 
+
+#control {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 35px;
+}
+
+#control button {
+    background: -webkit-linear-gradient(lightgray, white);
+    border: 1px solid gray;
+}
+
+
+#result {
+   text-align: center;
+}
+
+.playerO {
+    background-image: url("../img/player-o.svg");
+}
+
+.playerX {
+    background-image: url("../img/player-x.svg");
+}
+
+.topMargin {
+    margin-top: 4px;
+}
+
+footer {
+    float: right;
+}
+
+@media only screen and (min-width: 400px) {
+   
+    #board button {
+        height: 120px;
+        width: 120px;
+    }
+
+    #board {
+        width: 368px; 
+    }      
+    
+    #control {
+        width: 378px;
+    }
+
+    #control button {
+        font-size: 16px;
+    }
+
+    #result {
+        font-size: 50px;  
+        font-weight: bold;
+        margin-bottom: 35px;
+    }
+       
+} 
