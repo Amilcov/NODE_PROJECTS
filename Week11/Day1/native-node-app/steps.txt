@@ -1,0 +1,6 @@
+Dupa  pasul din readMe.pdf  
+     npx sequelize-cli db:create 
+se ruleaza
+   npx sequelize-cli db:migrate
+   npx sequelize-cli db:seed:all
+   
