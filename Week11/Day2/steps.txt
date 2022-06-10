@@ -1,0 +1,3 @@
+Pt fiecare dintre app folderul node_modules  treb ssa contina cea ce contine cand se ruleaza 
+npm install express
+npm install pug
