@@ -1,0 +1,12 @@
+html 
+  head 
+    title Routes Test
+  body 
+    h1 Welcome to Routes Test
+    h1 Products
+    ul 
+      each detailProduct in detailProducts 
+        li: a(href= detailProduct)= detailProduct
+    ul
+      each pathProduct in pathProducts 
+        li: a(href= pathProduct)= pathProduct
