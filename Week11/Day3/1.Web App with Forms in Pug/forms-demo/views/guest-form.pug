@@ -1,0 +1,13 @@
+extends layout.pug 
+
+block content
+  h2 Add guest
+  form(method="post" action="/guest")
+    label(for="fullName") Full name:
+    input(type="string" id="fullName" name="fullName")
+    label(for="email") Email:
+    input(type="email" id="email" name="email")
+    label(for="number") Number of Guests:
+    input(type="string" id="numGuests" name="numGuests") 
+    input(type="submit" value="Add a guest")
+
