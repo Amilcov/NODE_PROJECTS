@@ -38,9 +38,7 @@ const validateGuest = (req, res, next) => {
         errors.push('Number of guests must be fill in');
     }
 
-    req.body.errors = errors;
-    req.body = req.body;
- 
+    req.body.errors = errors; 
     next();
     
 }
