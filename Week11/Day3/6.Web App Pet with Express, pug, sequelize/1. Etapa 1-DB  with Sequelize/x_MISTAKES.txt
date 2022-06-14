@@ -1,0 +1,16 @@
+1. in migration file - model e la singular nu plurarl
+    references: {
+        model: "Pets"
+    }
+
+
+
+
+2. fc Obj.create nu se specifica keyword new!!!
+  Pet.create({
+    "name": "Azorel"
+})
+
+
+
+3. In dir models nu nu trebuie sa fie altceva decat fisierele models + idnex.js (care se genereaza automat la npx sequelize init)

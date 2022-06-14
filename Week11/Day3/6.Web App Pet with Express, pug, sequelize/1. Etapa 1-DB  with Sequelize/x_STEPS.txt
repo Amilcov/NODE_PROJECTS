@@ -1,0 +1,189 @@
+STEPS:
+
+    1. --------------------|PSQL-> create a user in pasql petadmin cu drept de creere DB
+       create user petadmin with createdb password 'petadmin';
+
+    2. --------------------|VS-> Creeam un proiect npm (package.json)
+        npm init -y
+
+    3. --------------------|VS-> Instalam: express sequelize sequelize-cli
+       npm install express
+       npm install sequelize sequelize-cli pg
+
+    4. --------------------|VS-> Initiem un proiect sequelize => creeaza 4 dir: migrations models seedes config.json   
+        npm sequelize init 
+
+    5. --------------------|VS-> configure json:    
+        "development": {
+            "username": "petadmin",
+            "password": "petadmin",
+            "database": "petAdmin_development",
+            "host": "127.0.0.1",
+            "dialect": "postgres",
+            "seederStorage": "sequelize"
+        },
+
+    6. --------------------|VS->  creeem DB (db mentionata in config.json)
+       npx sequelize-cli db:create 
+     
+    7. --------------------|VS-> creeam Modelel in DB (numele va fi la singular si cu literea mare 1st letter)
+        7.1 PetType--------------------|VS-> 
+                   npx sequelize-cli model:generate \
+                   --name PetType \ 
+                   --attributes type:string
+        7.2 Pet-------------------|VS-> 
+                 npx sequelize-cli model:generate \
+                 --name Pet \
+                 --attributes name:string,petTypeId:integer,age:integer
+
+        7.3 Owner--------------------|VS-> 
+                  npx sequelize-cli model:generate \
+                  --name Owner \
+                  --attributes firstName:string,lastName:string
+
+        7.4 PetOWners--------------------|VS-> 
+                  npx sequelize-cli model:generate \
+                  --name PetOwner \
+                  --attributes petId:integer,ownerId:integer
+
+        Nota: sequelize va genera automat plurarul la migrations (numele tb din .migration/fileX )
+  
+
+    8. --------------------|VS-> in fis din migrations punem toate restrictiile pe cols: dimensiune str, null, unique, FK
+        8. 1--------------------|EX: colDimension + null + unique
+            name: {
+               allowNull: false,
+               type: Sequelize.STRING(50),
+               unique: true
+            },
+        8.2--------------------|EX: FK
+            petTypeId: {
+                allowNull: false,
+                type: Sequelize.INTEGER,
+                references: {
+                    model: "PetTypes"
+                }
+  
+       
+    9. --------------------|VS-> generam obiectele in DB
+          npx sequelize-cli db:migrate  
+
+     
+    10. --------------------|VS-> in fis din models punem toate associations:
+        10. 1--------------------|Model: pettype.js 
+            static associate(models) {
+                // define association here
+                PetType.hasMany(models.Pet, {foreignKey: 'petTypeId'});
+            }
+
+        10. 2--------------------|Model: pet.js 
+            static associate(models) {
+                // define association here
+                Pet.belongsTo(models.PetType, {foreignKey: 'petTypeId'});
+
+                const mappingColumns = {
+                    through: 'PetOwner',
+                    foreignKey: 'petId',
+                    otherKey: 'ownerId'
+                } 
+                Pet.belongsToMany(models.PetOwner, mappingColumns); 
+            }
+
+        10. 3--------------------|Model: owner.js 
+            static associate(models) {
+                const mappingColumns = {
+                    through: 'PetOwner',
+                    otherKey: 'petId',
+                    foreignKey: 'ownerId'
+                } 
+               Owner.belongsToMany(models.PetOwner, mappingColumns); 
+            }
+            
+
+
+11.--------------------|VS -> Insert data 
+    11.1 bulkInsert -> static data
+          11.1.1--------------------| creeate seed file:
+                   npx sequelize-cli seed:generate --name default-pet-types
+                   npx sequelize-cli seed:generate --name default-pets
+                   npx sequelize-cli seed:generate --name default-owners
+                   npx sequelize-cli seed:generate --name default-pet-owners
+
+          11.1.2--------------------| populate seed file:
+                 11.1.2.1--------------------| ..pet-types.js
+                            module.exports = {
+                                async up (queryInterface, Sequelize) {
+                                    return queryInterface.bulkInsert('PetTypes',[ 
+                                    {type: 'dog', createdAt: new Date(), updatedAt: new Date()},
+                                    {type: 'cat', createdAt: new Date(), updatedAt: new Date()},
+                                    {type: 'panther', createdAt: new Date(), updatedAt: new Date()}
+                                ])
+                                },
+
+                                async down (queryInterface, Sequelize) {
+                                return queryInterface.bulkDelete('PetTypes', {
+                                    type: ['dog','cat', 'panther']
+                                })
+                                }
+                            };
+                 11.1.2.2--------------------| ..pets.js
+
+                            module.exports = {
+                                async up (queryInterface, Sequelize) {
+                                    return queryInterface.bulkInsert('Pets', [
+                                    {name: 'Azorel', petTypeId: 1, age: 2, createdAt: new Date(), updatedAt: new Date()},
+                                    {name: 'Miau', petTypeId: 2, age: 7, createdAt: new Date(), updatedAt: new Date()},
+                                    {name: 'Radix', petTypeId: 3, age: 2, createdAt: new Date(), updatedAt: new Date()},
+                                    {name: 'Stray', petTypeId: 1, age: 5, createdAt: new Date(), updatedAt: new Date()}
+                                    ])
+                                },
+
+                                async down (queryInterface, Sequelize) {
+                                    return queryInterface.bulkDelete('Pets', 
+                                      {name: ['Azorel', 'Miau', 'Radix', 'Stray']}
+                                    )
+                                }
+                            };
+                 11.1.2.3--------------------| ..owners.js
+                            module.exports = {
+                                async up (queryInterface, Sequelize) {
+                                    return queryInterface.bulkInsert('Owners', [
+                                    {firstName: 'Xenia', lastName: 'Princess', createdAt: new Date(), updatedAt: new Date()},
+                                    {firstName: 'Adriana', lastName: 'Smith', createdAt: new Date(), updatedAt: new Date()},
+                                    {firstName: 'Claudia', lastName: 'Roy', createdAt: new Date(), updatedAt: new Date()},
+                                    ])
+                                },
+
+                                async down (queryInterface, Sequelize) {
+                                    return queryInterface.bulkDelete('Owners', 
+                                    {name: ['Xenia', 'Adriana', 'Claudia']}
+                                    )
+                                }
+                           };
+
+                  11.1.2.4--------------------| ..petowners.js
+                            module.exports = {
+                                async up (queryInterface, Sequelize) {
+                                    return queryInterface.bulkInsert('PetOwners', [
+                                    {petId: 1, ownerId: 2, createdAt: new Date(),updatedAt: new Date() },
+                                    {petId: 2, ownerId: 2, createdAt: new Date(),updatedAt: new Date() },
+                                    {petId: 2, ownerId: 3, createdAt: new Date(),updatedAt: new Date() },
+                                    {petId: 3, ownerId: 1, createdAt: new Date(),updatedAt: new Date() },
+                                    {petId: 4, ownerId: 1, createdAt: new Date(),updatedAt: new Date() },
+                                    {petId: 4, ownerId: 2, createdAt: new Date(),updatedAt: new Date() },
+                                    {petId: 4, ownerId: 3, createdAt: new Date(),updatedAt: new Date() },
+                                    ])
+                                },
+
+                                async down (queryInterface, Sequelize) {
+                                   return queryInterface.bulkDelete('PetOwners', {
+                                      petId: [1, 2, 3]
+                                  })
+                                }
+                            };         
+
+
+    11.2 with Sequelize(create/ build + save) -> Dynamic data
+    
+       
+
