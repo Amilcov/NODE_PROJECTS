@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "petadmin",
+    "password": "petadmin",
+    "database": "petAdmin_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "seederStorage": "sequelize"
+  },
+  "test": {
+    "username": "petadmin",
+    "password": "petadmin",
+    "database": "petAdmin_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "seederStorage": "sequelize"
+  },
+  "production": {
+    "username": "petadmin",
+    "password": "petadmin",
+    "database": "petAdmin_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "seederStorage": "sequelize"
+  }
+}

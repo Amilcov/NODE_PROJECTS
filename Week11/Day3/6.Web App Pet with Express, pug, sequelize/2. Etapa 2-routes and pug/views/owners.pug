@@ -1,0 +1,38 @@
+html(lang="en")
+  head 
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous")
+    title Track Owners 
+  main 
+    ul 
+      li: a(href="/pets") Pets 
+      li: a(href="/owners") Owners
+
+      table.pure-table.pure-table-striped 
+        thead 
+          tr  
+             th First Name
+             th Last Name
+             th Pets
+        tbody 
+          each owner in owners 
+            tr 
+              td= owner.firstName      
+              td= owner.lastName  
+              td
+          else 
+            tr
+              td(colspan=3) No owner    
+
+      form.pure-form(method="post" action="/owners") 
+        legend Add an owner 
+        input( type="text" name="firstName" placeholder="firstName" required)
+        input(type="text" name="lastName" placeholder="lastName" required)
+        select(name="petId")
+          each pet in pets
+            option(value=pet.id)= pet.name
+        button.pure-button(type="submit") Add this owner 
+          
+
+  footer
