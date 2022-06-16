@@ -1,0 +1,40 @@
+1. in migration file - model e la singular nu plurarl
+    references: {
+        model: "Pets"
+    }
+
+
+
+
+2. fc Obj.create nu se specifica keyword new!!!
+  Pet.create({
+    "name": "Azorel"
+})
+
+
+
+3. In dir models nu nu trebuie sa fie altceva decat fisierele models + idnex.js (care se genereaza automat la npx sequelize init)
+
+4. Express=> '' !!!!
+OK: 'pug'
+NOT OK: pug
+app.set('view engine', 'pug');
+
+
+5.  Express=> app.set('view engine, 'pug');  
+OK:       app.set('view engine, 'pug');  
+NOT OK:   app.use('view engine, 'pug');  
+app.set('view engine', 'pug');
+
+
+6. block mainContent si nu doar mainContent
+
+7. intodeauna modelNameX.create e cu await!!!! 
+    await Pet.create
+          Nota: fara await dadea err ca pet.addOwner(Owner) is not a function!!!!
+
+8. e migrate - not migration 
+       npx sequelize-cli db:migrate:undo:all
+ 
+
+

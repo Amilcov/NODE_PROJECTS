@@ -1,0 +1,40 @@
+extends layout.pug
+
+block mainContent
+  table.pure-table.pure-table-striped
+    thead 
+      tr 
+        th Name 
+        th Type
+        th Age 
+        th Owner 
+    tbody 
+      each pet in pets
+        tr
+          td= pet.name 
+          td= pet.PetType.type
+          td= pet.age
+          td
+            ul
+              each owner in pet.Owners
+                li #{owner.firstName} #{owner.lastName}
+              else 
+                li No Owner  
+      else   
+        tr 
+          td(colspan=4) No pets
+
+  form.pure-form(method="post" action="/pets")
+    fieldset 
+      legend Add a pet
+      input(type="text" name="name" placeholder="name" required)
+      input(type="number" name="age" placeholder="age" required)
+      select(name="typeId" required)
+          each petType in petTypes
+              option(value= petType.id)= petType.type
+      select(name="ownersId" multiple)
+        each owner in owners 
+          option(value=owner.id) #{owner.lastName}, #{owner.firstName}  
+
+      button.pure-button(type="submit") Add this pet  
+
