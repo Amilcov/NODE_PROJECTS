@@ -1,6 +1,6 @@
 1. No **/** \
    before file name in render fc \
-   Correct:  res.render('create'... \
-   Error:    res.render('/create'.... 
+   **OK:**  res.render('create'... \
+   **!OK:**    res.render('/create'.... 
      
 
