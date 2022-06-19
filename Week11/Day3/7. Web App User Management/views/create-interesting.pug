@@ -1,0 +1,46 @@
+extends layout.pug 
+
+block errorsBlock
+  include includes/errors.pug 
+
+block contentBlock
+  form.font-weight-bold(method="post" action="/create-interesting") 
+    fieldset
+      include includes/form-inputs.pug
+    div.form-group
+      label(for="age") Age:
+      input.form-control.form-control-sm(type="number" name="age" value= age placeholder="age")
+    div.form-group  
+      label(for="favoriteBeatle") Favorite Beatle:
+      select(name="favoriteBeatle") 
+        option(value="") --Please choose an option--
+
+        if (favoriteBeatle == 'John')
+          option(value="John" selected='selected') John
+        else     
+          option(value="John") John
+
+        if (favoriteBeatle == 'Paul')
+          option(value="Paul" selected='selected') Paul
+        else     
+          option(value="Paul") Paul
+
+        if (favoriteBeatle == 'Ringo')
+          option(value="Ringo" selected='selected') Ringo
+        else     
+          option(value="Ringo") Ringo
+
+        if (favoriteBeatle == 'George')
+          option(value="George" selected='selected') George
+        else     
+          option(value="George") George
+
+        if (favoriteBeatle == 'Scooby-Doo')
+          option(value="Scooby-Doo" selected='selected') Scooby-Doo
+        else     
+          option(value="Scooby-Doo") Scooby-Doo
+
+    div.form-group    
+      label(for="iceCream") Likes Icecream:  
+      input(type="checkbox" name="iceCream" checked= iceCream)
+    input.form-control-sm(type="submit" value="Create Interesting User")
