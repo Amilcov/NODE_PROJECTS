@@ -1,0 +1,10 @@
+extends layout.pug 
+
+block errorsBlock
+  include includes/errors.pug
+     
+block contentBlock
+  form.font-weight-bold(method="post" action="/create") 
+    fieldset 
+      include includes/form-inputs.pug
+      input.form-control-sm(type="submit" value="Create User")
