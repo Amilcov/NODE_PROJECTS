@@ -1,4 +1,10 @@
-extends layout.pug 
+extends layout.pug
+
+mixin selectOfFavoriteBeatle(optionName)
+  if (favoriteBeatle == optionName)
+    option(value= optionName selected='selected')= optionName
+  else     
+    option(value= optionName) #{optionName}
 
 block errorsBlock
   include includes/errors.pug 
@@ -14,33 +20,12 @@ block contentBlock
       label(for="favoriteBeatle") Favorite Beatle:
       select(name="favoriteBeatle") 
         option(value="") --Please choose an option--
-
-        if (favoriteBeatle == 'John')
-          option(value="John" selected='selected') John
-        else     
-          option(value="John") John
-
-        if (favoriteBeatle == 'Paul')
-          option(value="Paul" selected='selected') Paul
-        else     
-          option(value="Paul") Paul
-
-        if (favoriteBeatle == 'Ringo')
-          option(value="Ringo" selected='selected') Ringo
-        else     
-          option(value="Ringo") Ringo
-
-        if (favoriteBeatle == 'George')
-          option(value="George" selected='selected') George
-        else     
-          option(value="George") George
-
-        if (favoriteBeatle == 'Scooby-Doo')
-          option(value="Scooby-Doo" selected='selected') Scooby-Doo
-        else     
-          option(value="Scooby-Doo") Scooby-Doo
-
+        +selectOfFavoriteBeatle("John")
+        +selectOfFavoriteBeatle("Paul")
+        +selectOfFavoriteBeatle("Ringo")
+        +selectOfFavoriteBeatle("George")
+        +selectOfFavoriteBeatle('Scooby-Doo')
     div.form-group    
       label(for="iceCream") Likes Icecream:  
       input(type="checkbox" name="iceCream" checked= iceCream)
-    input.form-control-sm(type="submit" value="Create Interesting User")
+    input.form-control-sm.btn-primary(type="submit" value="Create Interesting User")
