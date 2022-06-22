@@ -1,0 +1,12 @@
+extends layout.pug
+
+
+block content
+  h3= book.title
+  div.py-4
+    p Proceed with deleting this book?
+  div  
+    form(method='post' action=`/book/delete/${book.id}`)
+      include book-form-fields.pug      
+      button.btn.btn-danger(type="submit") Delete Book
+      a.btn.btn-warning.ml-2(href='/' role='button') Cancel   

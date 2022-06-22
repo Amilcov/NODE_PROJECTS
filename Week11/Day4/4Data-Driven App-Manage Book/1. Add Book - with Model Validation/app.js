@@ -13,23 +13,17 @@ app.use(routes);
 
 
 
-
-
 //general ROUTE handler for unmatched requests
 app.use((req, res, next) => {
    const err = new Error ('The requested page could not be found!');
    err.status = 404;
-   //console.log('__________general route to catch unhandle routes', err);
    next(err);
 });
 
 
-
 app.use((err, req, res, next) => {
     try{
-      
     } catch (err){
-
     };
     next(err);
 })
@@ -39,7 +33,6 @@ app.use((err, req, res, next) => {
    if(process.env.NODE_ENV === 'production') {
        //to do log err to db
    } else {
-      //console.log('_________log err');
       console.log(err);
    }
    next(err);
@@ -47,9 +40,7 @@ app.use((err, req, res, next) => {
 
 //custom error handles - to handle errors 'Page not found'
 app.use((err, req, res, next) => {
-     //console.log('______err 404-START');
     if(err.status === 404) {
-       // console.log('______err 404')
         res.status = 404;
         res.render('page-not-found', {title: "Page not found"});
     } else {
@@ -59,7 +50,7 @@ app.use((err, req, res, next) => {
 
 //custom error handles - generic handle - to handdle any error
 app.use((err, req, res, next) => {
-    //console.log('______err CUSTOM START')
+
     res.status = err.status || 500;
     const isProduction = process.env.NODE_ENV === 'production';
     res.render('error', {
