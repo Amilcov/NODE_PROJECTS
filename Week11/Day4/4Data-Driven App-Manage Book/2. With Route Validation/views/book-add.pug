@@ -1,0 +1,11 @@
+extends layout.pug
+
+include utils.pug 
+
+block content
+  +validationErrorSummary(errors)
+  form(method='post' action='/book/add')  
+    include book-form-fields.pug  
+    div.py-4
+      button.btn.btn-primary(type='submit') Add book
+      a.btn.btn-warning.ml-2(href='/' role='button') Cancel
