@@ -1,1 +1,7 @@
 
+1. app.set('view engine', 'pug') 
+   1.1. set vs use!
+   1.2 'pug' vs pug
+ 
+2. p Hello 
+   2.1 hello vs 'Hello'  in pug
