@@ -16,3 +16,25 @@
     Corect      vs Gresit
      Luna nu se pune cu 0 in fata, dc se pune la import seeders 
      ERROR: Octal literals are not allowed in strict mode.
+
+5. Nu merge sa creez 
+     - un  user nou: user1 
+     - o noua db: DB1 
+     pe sysadmin
+     apoi sa ii dau toate privilegile  lui user1 pe db1
+            create database amusement_park_tracker;
+            create user amusement_park_tracker_app with password '«a strong password for the user»';
+            grant all privileges on database amusement_park_tracker to amusement_park_tracker_app;
+            
+            baza ramane tot pe superuser, user1 nu poate vedea nicio tb din db
+            
+            
+            
+       BEST Practice:
+        1. creez userul
+        2. fac switch pe userul nou creeat: SET ROLE user1
+        3. creez DB1
+
+
+
+6.
