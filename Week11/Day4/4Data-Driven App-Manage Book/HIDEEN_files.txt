@@ -1,1 +1,15 @@
   
+NOTA: 
+1. proiectul contine 3 fisiere hidden
+
+.env
+.env.example
+.sequelizerc
+
+
+2. Acestea au fost redenumite cu
+   h.env
+   h.env.example
+   h.sequelizerc
+   
+ 3.pt a putea fi urcate pe Git la instalare proiect rebuie redenumite ca la pct 1
