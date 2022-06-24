@@ -8,6 +8,6 @@ mixin validationErrorSummary(errors)
 
 mixin rowForm(labelName, fieldName, fieldValue, placeholderText)
   div.form-group
-    label(for=nameField)= labelName
+    label(for=fieldName)= labelName
     input(type='text' id= fieldName name= fieldName value= fieldValue placeholder= placeholderText class='form-control')
 
