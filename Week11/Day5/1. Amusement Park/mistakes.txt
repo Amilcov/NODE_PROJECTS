@@ -5,3 +5,14 @@
  
 2. p Hello 
    2.1 hello vs 'Hello'  in pug
+
+3. res.status(500);
+   res.render(....   VS res.status = 500!!!!!!!!!!!!!!!!!!!!!!
+   3.1 Fc care seteaza statusul pentru un raspuns intrun handle de err este res.status(500) 
+   3.2 Fc care defineste o propietate numita status a unui obiect de tip Error se steazea cu obj.pro = 400 cand se DECLARA UN HANDLER PT A PRINDE TOATE REQ CARE NU AU UN HANDLER DECLARAT
+   
+   
+4.  opened: new Date(1858, 6, 20) vs   new Date(1858, 06, 20)
+    Corect      vs Gresit
+     Luna nu se pune cu 0 in fata, dc se pune la import seeders 
+     ERROR: Octal literals are not allowed in strict mode.
