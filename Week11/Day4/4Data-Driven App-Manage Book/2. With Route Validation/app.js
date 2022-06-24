@@ -16,7 +16,7 @@ app.use(routes);
 //general ROUTE handler for unmatched requests
 app.use((req, res, next) => {
    const err = new Error ('The requested page could not be found!');
-   err.status = 404;
+   err.status(404);
    next(err);
 });
 
@@ -41,7 +41,7 @@ app.use((err, req, res, next) => {
 //custom error handles - to handle errors 'Page not found'
 app.use((err, req, res, next) => {
     if(err.status === 404) {
-        res.status = 404;
+        res.status(404);
         res.render('page-not-found', {title: "Page not found"});
     } else {
       next(err);
@@ -51,7 +51,7 @@ app.use((err, req, res, next) => {
 //custom error handles - generic handle - to handdle any error
 app.use((err, req, res, next) => {
 
-    res.status = err.status || 500;
+    res.status(err.status || 500);
     const isProduction = process.env.NODE_ENV === 'production';
     res.render('error', {
         title: "Server error",
