@@ -37,4 +37,12 @@
 
 
 
-6.
+6. a.btn.btn-primary(href=`/park/${park.id}` 
+    Atentie:    ` (backtick)  vs  ' (quote)
+                    correct  vs gresit
+                    
+                    
+                    
+7.                    
+    
+
