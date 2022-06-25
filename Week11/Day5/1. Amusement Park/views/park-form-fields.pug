@@ -1,0 +1,10 @@
+include utils.pug
+
+input(type='hidden', name='_csrf' value= csrfToken)
++fieldForm('Park Name: ', 'parkName', park.parkName, 'Park Name', true)
++fieldForm('City: ', 'city', park.city, 'City', true)
++fieldForm('Province State: ', 'provinceState', park.provinceState, 'Province State', true)
++fieldForm('Country: ', 'country', park.country, 'Country', true)
++fieldForm('Opened: ', 'opened', park.opened, 'ex: 2000-01-31', true)
++fieldForm('Size: ', 'size', park.size, 'Description', true)
++fieldForm('Description: ', 'description', park.description, 'Description', false)
