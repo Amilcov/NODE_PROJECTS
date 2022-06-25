@@ -1,0 +1,3 @@
+npx sequelize model:generate \ 
+--name Attraction \ 
+--attributes parkId:integer,attractionName:string,theme:string,opened:dateonly,ridersPerVehicle:integer,visitedOn:dateonly,raiting:integer,comments:string
