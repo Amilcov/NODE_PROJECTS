@@ -1,0 +1,20 @@
+Fisierele din 
+       directorul hiddenFiles 
+       sunt fisiere care au doar extensie 
+       deci vazute de GIT ca fisiere hidden 
+       si de accea nu se pot copia pe GIT
+       
+       pentru a putea fi copiate au fostle a- fost atasate un nume de fisier h la toate 
+       cand se face deplay pe server/ site host trebuie renemumite in fisere fara nume, doar cu extenise:
+       
+       
+       Astfel va rezulta:
+          .env
+          .enx.example
+          .enc.spec
+          .sequelizerc
+          
+          
+          si SE VOR COPIA IN DIR ROOT
+          
+           
