@@ -43,6 +43,20 @@
                     
                     
                     
-7.                    
+7. la  ruta GET:    ex: router.get('/park/add', csrfProtection, (req, res, next) => {
+
+   park =  db.Park.build()
+   
+       vs 
+       
+   park = { 
+       city: '',
+       .........
+   }     
+
+  Ambele variante sunt OK.
+  
+  
+  
     
 
