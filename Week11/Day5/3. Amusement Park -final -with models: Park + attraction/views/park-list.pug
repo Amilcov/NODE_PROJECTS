@@ -1,0 +1,18 @@
+extends layout.pug
+block content
+  a.btn.btn-success.mb-2(href='/park/add') Add Park
+
+  table.table.table-striped
+    thead.table-dark
+      tr
+        th Park Name
+        th Location
+        th Opened
+        td 
+    tbody
+      each park in parks
+        tr
+          td= park.parkName
+          td #{park.city}, #{park.provinceState} #{park.country}
+          td= park.opened
+          td: a.btn.btn-primary(href=`/park/${park.id}` role='button') Details

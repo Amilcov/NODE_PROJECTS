@@ -1,0 +1,16 @@
+mixin displayErrors(errors)
+  if errors 
+    div.alert.alert-danger 
+      p The following error(s) occurred:
+      ul
+        each error in errors
+          li= error
+
+mixin fieldForm(labelName, fieldName, fieldValue, placeholderText, isSingleLine)
+  div.form-group
+    label(for= fieldName)= labelName
+    if isSingleLine
+      input.form-control(type='text' id= fieldName, name= fieldName, value= fieldValue, placeholder= placeholderText)
+    else
+      textarea.form-control(id= fieldName name= fieldName  placeholder= placeholderText rows=5)= fieldValue
+

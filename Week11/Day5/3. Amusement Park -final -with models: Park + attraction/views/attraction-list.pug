@@ -1,0 +1,21 @@
+h3.mt-5.mb-4 Attractions
+
+a.btn.btn-success.mb-2(href=`/park/${park.id}/attraction/add`) Add Attraction
+
+table.table.table-striped
+  thead.table-dark
+    tr
+      th Attraction Name
+      th Theme
+      th Opened
+      th Riders per Vehicle
+      td 
+  tbody
+    each attraction in attractions
+      tr
+        td= attraction.attractionName
+        td= attraction.theme
+        td= attraction.opened
+        td= attraction.ridersPerVehicle
+        td
+          a.btn.btn-primary(href=`/attraction/${attraction.id}` role='button') Details

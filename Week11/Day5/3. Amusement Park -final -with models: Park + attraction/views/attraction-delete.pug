@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content 
+
+  h3= attraction.attractionkName
+  div
+    p Proceed with deleting this attraction?
+  div  
+    form(method='post' action=`/attraction/delete/${attraction.id}`)
+      input(type='hidden', name='_csrf' value= csrfToken)
+      button.btn.btn-danger(type='submit') Delete Attraction
+      a.btn.btn-warning.ml-2(href=`/attraction/${attraction.id}`) Cancel

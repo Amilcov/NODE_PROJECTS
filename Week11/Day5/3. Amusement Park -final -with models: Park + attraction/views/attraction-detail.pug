@@ -1,0 +1,14 @@
+extends layout.pug
+block content
+  h3= attraction.attractionkName
+  div
+    ul
+      li Theme: #{attraction.theme}
+      li Opened: #{attraction.opened}
+      li Riders Per Vehicle: #{attraction.ridersPerVehicle}
+      li Comments: #{attraction.comments}
+
+  div  
+    a.btn.btn-primary.ml-2(href=`/attraction/edit/${attraction.id}` role='button') Edit
+    a.btn.btn-danger.ml-2(href=`/attraction/delete/${attraction.id}`) Delete
+    a.btn.btn-warning.ml-2(href=`/park/${attraction.parkId}`) Return to List
