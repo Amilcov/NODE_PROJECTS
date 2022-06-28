@@ -1,8 +1,8 @@
 1. terminal> psql
 
-  1. create user amusement_park_tracker_app with  password 'amusement_park_tracker_app' createdb
-  2. set role amusement_park_tracker_app
-  3. create database amusement_park_tracker
+  1. create user people_management_app with  password 'people_management_app' createdb
+  2. set role people_management_app
+  3. create database people_management
 
 
 3. instalam in node toate pachetele npm install
