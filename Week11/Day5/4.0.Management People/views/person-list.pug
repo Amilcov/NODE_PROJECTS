@@ -1,0 +1,20 @@
+html
+  head 
+    title List of People
+  body 
+    table
+      thead 
+        tr
+          th First Name 
+          th Last Name 
+          th Age 
+          th Biography 
+          th Hair Color 
+      tbody   
+        each person in people   
+          tr 
+            th= person.firstName 
+            th= person.lastName 
+            th= person.age 
+            th= person.biography 
+            th= person.hairColorId

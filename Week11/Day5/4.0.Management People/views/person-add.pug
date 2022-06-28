@@ -1,0 +1,26 @@
+html 
+  head 
+    title Adding a person
+  body
+    form(method='post' action='/new-person')
+      div
+        label(for= firstName) First Name
+        input(type="text" name="firstName" value= person.firstName required)
+      div
+        label(for= lastName) Last Name
+        input(type="text" name="lastName" value= person.lasttName required)
+      div
+        label(for= age) Age
+        input(type="number" name="age" value= person.age)
+      div
+        label(for= "biography") Biography
+        textarea(name="biography" rows="3" cols="10")= person.biography
+      div
+        label(for= hairColorId) Hair Color
+        select(type="text" name= "hairColorId" value= person.hairColorId)
+          each hairColor in hairColors
+            option(value= hairColor.id)= hairColor.color
+      input(type="hidden" name="_csrf" value= person.csrfToken)   
+      button(type="submit") Adauga persoana
+    
+
