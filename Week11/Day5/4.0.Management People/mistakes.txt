@@ -1,0 +1,7 @@
+
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO people_management_app;
+
+where 
+people_management_app;
+is user
