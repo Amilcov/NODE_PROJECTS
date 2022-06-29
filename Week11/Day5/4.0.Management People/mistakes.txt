@@ -1,7 +1,30 @@
 
-
+1.
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO people_management_app;
 
 where 
 people_management_app;
 is user
+
+
+------------------------------------------!!!!-------------------------------------
+2.  fis .env -nu e JS!!!  NU  TREBUIE SA CONTINA ;
+            OK:  PORT=8081
+            NOT OK:  PORT=8081;
+            
+         
+                Eroare:      
+                        events.js:288
+                              throw er; // Unhandled 'error' event
+                              ^
+
+                        Error: listen EADDRINUSE: address already in use 8082;            
+                          code: 'EADDRINUSE',
+                          errno: 'EADDRINUSE',
+                          syscall: 'listen',
+                          address: '8082;',
+                          port: -1
+                        }
+                        [nodemon] app crashed - waiting for file changes before starting...
+                        
+                        
