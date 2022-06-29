@@ -6,7 +6,7 @@ const db = require('../db/models');
 db.sequelize.authenticate()
   .then(() => {
       console.log('DB connection successful');
-      app.listen(8080, () => console.log(`Server is listening on port ${port}...`));
+      app.listen(port, () => console.log(`Server is listening on port ${port}...`));
   })
   .catch(err => {
       console.log('DB connection faild');
