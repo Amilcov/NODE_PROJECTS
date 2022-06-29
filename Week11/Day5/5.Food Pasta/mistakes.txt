@@ -1,0 +1,29 @@
+ 1. De Ce tabele din DB se creeaza cu ownerul adriabaclaudia in loc de ownerul indicat in DB_USER [din .env => index.js -> database.js]? 
+ psql food_pasta
+ 
+ pt ca in fis config/database.js nu exista username!!!!!
+ exista doar user
+ 
+ dar treb sa fie username!!!
+ 
+ 
+ const { database, user, password, host } = require('./index').db;
+
+module.exports = {
+    development: {
+                    database,
+                    username: user, 
+                    password, 
+                    host,
+                    "dialect": "postgres",
+                    "seederStorage": "sequelize"
+                },
+    production: {
+                    database,
+                    username: user, 
+                    password, 
+                    host,
+                    "dialect": "postgres",
+                    "seederStorage": "sequelize"
+                }            
+}
