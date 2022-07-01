@@ -1,0 +1,8 @@
+extends layout.pug
+
+block content
+  form(method='post' action='/pasta/create')
+    include pasta-form-fields.pug
+    div.py-4
+     button.btn.btn-primary(type="submit") Create pasta
+     a.btn.btn-warning.ml-2(href="/") Cancel

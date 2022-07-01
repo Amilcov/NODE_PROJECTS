@@ -1,0 +1,27 @@
+extends layout.pug
+
+block content 
+  if showPastaLink 
+    a.btn.btn-info.mb-4(href="/") Pasta List
+
+  table.table.table-striped.table-hover
+    thead.head-dark
+      row 
+        th Label 
+        th Pasta's Noodle 
+        th Pasta's Sauce 
+        th Taste 
+        th Description
+
+    tbody   
+      each item in pasta
+        tr 
+          td= item.label 
+          td
+            a(href=`/noodle/${item.noodleId}`) #{item.Noodle.name}
+          td
+            a(href=`/sauce/${item.sauceId}`) #{item.Sauce.name} 
+          td= item.taste 
+          td= item.description    
+
+  a.btn.btn-primary(href="/pasta/create") Create Pasta

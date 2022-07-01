@@ -1,0 +1,19 @@
+mixin formRow(labelName, fieldName, fieldValue, placeholderText, typeSingleMultiSelect, itemsSelect)
+  div.form-group
+    label(for= fieldName)= labelName 
+
+    case typeSingleMultiSelect
+      when 'singleLine'      
+        input.form-control(type="text" name= fieldName  fieldValue= fieldValue placeholder= placeholderText required)
+
+      when 'multiLine'
+        textarea.form-control( name= fieldName rows="3" cols="50")
+
+      when 'selectLine'
+        select.form-control(name=fieldName value= fieldValue)
+          each item in itemsSelect
+            option(value= item.id)= item.name
+      when 'numberLine'   
+          input.form-control(type="number" min="0" max="10" name= fieldName  fieldValue= fieldValue placeholder= placeholderText required)    
+      default 
+        p= labelName    

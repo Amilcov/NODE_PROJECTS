@@ -1,0 +1,8 @@
+include utils.pug
+
++formRow('Label:', 'label', pasta.label, 'Label', 'singleLine')
++formRow('Description:', 'description', pasta.description, 'Description', 'multiLine')
++formRow('Taste:', 'taste', pasta.taste, 'Taste - a value betwen 0.00- 99.9', 'numberLine')
++formRow('Noodle:', 'noodleId', pasta.noodleId, 'Noodle', 'selectLine', noodles)
++formRow('Sauce:', 'sauceId', pasta.sauceId, 'Sauce', 'selectLine', sauces)  
+input(type="hidden" name="_csrf", value= csrfToken)

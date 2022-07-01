@@ -1,0 +1,449 @@
+STEPS:
+
+STEP 1:-------------------------------------------------------------------------
+       npm init -y   
+           
+       //acesta va initia un proiect npm      
+       //rezultat: package.json
+
+STEP 2:-------------------------------------------------------------------------
+      npm install express
+      npm install nodemon --save-dev
+      npm install morgan     
+      npm install dotenv dotenv-cli --save-dev
+
+      Nota: 
+            morgan - utlizam pt a loga toate cererile in terminnal pt dev mode
+            dotenv - utilizam pentru a incarca variabilile environments [declarate in .env] in process.env
+
+STEP 3:-------------------------------------------------------------------------
+     -----------------------------------ATENTIE---------------------------------
+     ----------------------------NU se pune ; in env----------------------------
+      creeam fisierul .env
+
+      PORT=8081
+
+
+STEP 4: creeam directorul config     
+             inside: creeam fis index.js
+                  Exemplu:
+                        module.exports = {
+                            port: process.env.PORT || 8081
+                        } 
+
+STEP 5:-------------------------------------------------------------------------
+      creeam fisierul app.js
+                    Exemplu:
+                        const express = require('express');
+                        const { port } = require('./config/index');
+                        
+                        const app = express();
+
+                        app.listen(port, () => console.log(`Server is listening on port ${port}...`));
+ 
+STEP 6:-------------------------------------------------------------------------
+      creeam fisierul routes.js
+                        Exemplu: 
+                            const express = require('express');
+                            const router = express.Router();
+
+                            router.get('/', (req, res) => {
+                               res.send('Hello');
+                            });
+
+                            module.exports = router;
+
+ *********TEST1*****************************************************************
+ node app
+ http://localhost:8081/ 
+
+
+    //rezultat:  Hello
+********************************************************************************
+
+STEP 7:-------------------------------------------------------------------------
+      actualizam fisierul app.js sa foloseasca routes.js
+
+                        Exemplu:
+                            const express = require('express');
+                            const { port } = require('./config/index');
+                            const routes = require('./routes');
+
+                            const app = express();
+
+                            app.use(routes);
+                            app.listen(port, () => console.log(`Server is listening on port ${port}...`));
+
+                            module.exports = app
+STEP 8:-------------------------------------------------------------------------
+       modificam fisierul package.json sa porneasca cu comanda 'npm start'
+                        Examplu: 
+                               "scripts": {
+                                            "start": "nodemon app",
+
+
+
+
+
+ *********TEST2*****************************************************************
+ npm start
+ http://localhost:8081/ 
+
+
+    //rezultat:  Hello
+********************************************************************************
+
+
+STEP 9:-------------------------------------------------------------------------
+        creeam directorul bin     
+             inside: creeam fis www
+
+                         Examplu:
+                                const { port } = require('../config/index'); 
+                                const app = require('../app');
+
+
+                                app.listen(port, () => console.log(`Server is listening on port ${port}...`));
+
+
+STEP 10:------------------------------------------------------------------------
+        modificam fisierul app.js
+
+                        Examplu: 
+                            const express = require('express');
+                            const routes = require('./routes');
+
+                            const app = express();
+
+                            app.use(routes);
+
+                            module.exports = app
+
+ *********TEST3*****************************************************************
+npm start
+ http://localhost:8081/ 
+
+
+    //rezultat:  Hello
+********************************************************************************
+
+
+
+STEP 11:------------------------------------------------------------------------
+      modificam fisierul package.json sa porneasca cu npm start
+                    Examplu: 
+                          "main": "./bin/www",
+                          "scripts": {
+                                    "start": "nodemon -r dotenv/config ./bin/www"
+
+STEP 12:------------------------------------------------------------------------
+ -------------------------STEP 12 - 13 morgan pt logg req-----------------------
+        npm install morgan 
+
+STEP 13:------------------------------------------------------------------------
+        modificam fis app.js
+                   Exmplu:  
+                           const express = require('express');
+                            const morgan = require('morgan');
+                            const routes = require('./routes');
+
+                            const app = express();
+
+                            app.use(morgan('dev'));
+                            app.use(routes);
+
+
+
+                            module.exports = app     
+
+
+STEP 14:------------------------------------------------------------------------
+        -----------------------STEP 14 - 15 cookie-parser-----------------------      
+
+        npm install cookie-parser
+
+STEP 15:------------------------------------------------------------------------
+      modificam fis app.js ca sa us cookie parsr & urlencoded
+                       Exmple:
+                            const express = require('express');
+                            const morgan = require('morgan');
+                            const cookieParser = require('cookie-parser');
+                            const routes = require('./routes');
+
+                            const app = express();
+
+                            app.use(morgan('dev'));
+                            app.use(cookieParser());
+                            app.use(express.urlencoded());
+                            app.use(routes);
+
+
+
+                            module.exports = app
+
+          
+STEP 16:------------------------------------------------------------------------
+        ------------------------- step 16-22 sequelize--------------------------
+
+
+         npm install sequelize
+         npm install sequelize-cli --save-dev
+     
+
+STEP 17:------------------------------------------------------------------------    
+        --------------STEP 17 - 18  DB settings: .env & index.js---------------
+        actualizam fisierul .env cu info despre DB_
+                      Exemplu:
+                            PORT=8081
+                            DB_DATABASE=food_pasta
+                            DB_USER=food_pasta_app
+                            DB_PASSWORD=food_pasta_app
+                            DB_HOST=localhost
+
+STEP 18:------------------------------------------------------------------------    
+        actualizam fisierul config/index.js cu info despre db
+                    Exemplu:
+                        module.exports = {
+                                            port: process.env.PORT || 8081,
+                                            db: {
+                                                database: process.env.DB_DATABASE,
+                                                user: process.env.DB_USER,
+                                                password: process.env.DB_PASSWORD,
+                                                host: process.env.DB_HOST
+                                            }
+                                        }
+
+
+STEP 19:------------------------------------------------------------------------    
+        -------------------creeam fisierul   .sequelizerc ----------------------
+        toate comezile sequelize se vor "uita" aici dupa calea lui models, migrations, seeders + config [care se creeaza la init ul lui sequelize]
+
+                       Exemple: 
+                                const path = require('path');
+                                module.exports = {
+                                                    "config": path.resolve('config', 'database.js'),
+                                                    "models-path": path.resolve('db', 'models'),
+                                                    "migrations-path": path.resolve('db', 'migrations'),
+                                                    "seeders-path": path.resolve('db', 'seeders')
+                                                }
+
+      
+
+STEP 20:------------------------------------------------------------------------ 
+         npx sequelize init
+
+          // rezulat: va genera
+                   -dir db/ cu:
+                          - dir models/
+                          - dir migrations/
+                          - dir seeders/  
+                   -database.js (in dir config ) 
+
+                 //Path ul unde se genreaza toate stea sunt trecute in .sequelizerc        
+                   
+ *********TEST4*****************************************************************
+npm start
+ http://localhost:8081/ 
+
+
+    //rezultat:  Hello
+********************************************************************************
+
+STEP 21:------------------------------------------------------------------------    
+        -----------STEP 21 - STEP 23: make settings for: sequelize--------------
+        creeam  fisierul config/database.js
+                    Exemplu:
+
+                    const { database, user, password, host } = require('./index').db;
+
+                    module.exports = {
+                        development: {
+                                        database,
+                                        username: user, 
+                                        password, 
+                                        host,
+                                        'dialect': 'postgres'
+                                    }
+                    }
+
+
+!!!! FFF IMPORTANT: fis de config pt sequelize stie de 'username' nu de 'user'!!!
+
+STEP 22: -----------------------------------------------------------------------
+        creeam in psql:
+        user: food_pasta_app
+                  cu parola: food_pasta_app
+                  cu drept de creere db
+        baza de date food_pasta, 
+        
+           Exemplu:
+               terminal> psl
+                           //suntem logati ca admin
+                create user food_pasta_app with password 'food_pasta_app' createdb;
+                set role food_pasta_app;
+                adrianaclaudia=> create database food_pasta;
+                \q
+                psql food_pasta -Ufood_pasta_app
+
+
+ *********TEST5*****************************************************************
+
+npm start
+ http://localhost:8081/ 
+
+
+    //rezultat:  Hello
+********************************************************************************
+
+
+
+STEP 23: ----------------------------------------------------------------------- 
+       modificam pct bin/www 
+
+
+         in loc de app.listen....
+         se foloseste 
+          db.sequelize.authenticate() 
+            .then()
+            .catch(err => {})
+
+
+
+                    Exemplu:
+
+
+                        db.sequelize.authenticate() 
+                        .then(() => {
+                            console.log('Database connection successful');
+                            app.listen(port, () => console.log(`Server is listening on port ${port}...`));
+                        })
+                        .catch( err => {
+                            console.log('Database connection faild');
+                            console.error(err);
+                        })
+
+STEP 24:----------------------------------------------------------------------- 
+      modificam fis config/database.js sa contina info 
+      "seederStoarge: "sequelize"
+                       Exemple:
+                          
+
+
+ *********TEST6*****************************************************************
+
+npm start
+ http://localhost:8081/ 
+    
+    //rezultat: 
+        terminal: 
+            Executing (default): SELECT 1+1 AS result
+            Database connection successful
+            Server is listening on port 8081...  
+ 
+         browser:
+            Hello
+
+********************************************************************************
+
+
+STEP 24: ----------------------------------------------------------------------- 
+         -----------------------------installpug------------------------------- 
+
+         npm install pug
+         modificam in app.js
+
+         app.set('view engine', 'pug');
+
+            Exemplu: 
+                    ....
+                    const routes = require('./routes');
+                    const app = express();
+
+                    app.set('view engine', 'pug');
+
+                    app.use(morgan('dev'));
+                    .....
+
+
+
+
+STEP 25: ----------------------------------------------------------------------- 
+         ---------------STEPS 25- 29  DB TABLES-----------
+
+
+STEP 26.1  ---------------------------------------------------------------------
+          --------------------npx sequelize model:generate \...------------------
+
+      npx sequelize model:generate \
+      --name Noodle \
+      --attributes name:string,isStuffed:boolean,pastaId:integer
+
+
+STEP 26.2  ---------------------------------------------------------------------
+      npx dotenv sequelize db:migrate
+
+
+STEP 26.3  ---------------------------------------------------------------------
+     npx sequelize seed:generate  \
+     > --name default-noodles
+     //INSEREZ DATELE IN SEED
+
+
+ STEP 27.1  ---------------------------------------------------------------------
+ npx sequelize model:generate \
+> --name Sauce \
+> --attributes name:string,color:string
+  -
+
+
+STEP 28.1  ---------------------------------------------------------------------
+      --------------------npx sequelize model:generate \...------------------
+
+         -----  models: pasta       
+         terminal ->:
+                    npx sequelize model:generate \
+                    --name Pasta \
+                    --attributes label:string,description:text,taste:decimal,noodleId:integer,sauceId:integer
+
+
+                NOTA: Intre campuri   
+                    e , 
+                    NU; 
+                    ;= end OF command
+
+
+STEP 28.2: ---------------------------------------------------------------------       
+
+       npx dotenv sequelize db:migrate
+
+
+
+STEP 28.3---------------------------------------------------------------------   
+         -- intrucat :
+              ->  nu se poate face select tb "Pasta: in  PSQL
+                     pt ca : ERROR:  permission denied for table Pasta
+                     //cumva Pasta table s a creeat pe userul adrianaclaudia( adminul PSQL)
+              -> si nici nu se poate vedea in PostBird
+
+
+
+    > psql food_pasta  
+     # alter table public."Pasta" owner to food_pasta_app;
+
+     NUUUU!!! era de la config/database.js care in  avea user in loc de username :
+     
+     db {
+          username:
+     }
+
+
+
+STEP 29.------------------------------------------------------------------------  
+ npx dotenv sequelize db:migrate
+ npx dotenv sequelize db:seed:all
+
+
+
+
+ STEP 30: ----------------------------------------------------------------------- 
+          -------------------------------ROUTES---------------------------------- 
