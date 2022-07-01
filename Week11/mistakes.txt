@@ -1,3 +1,6 @@
 1. Atentie in pug nu se pune ; 
-pun din greseala ; la sf liniei - de verificat
+  pun din greseala ; la sf liniei - de verificat
+
+        
+        
 
